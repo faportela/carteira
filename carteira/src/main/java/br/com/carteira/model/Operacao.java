@@ -1,5 +1,6 @@
 package br.com.carteira.model;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -9,22 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="carteira")
+@Table(name="operacao")
 public class Operacao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String ativo;
 	private String tipo;
 	private Calendar data;
-	private double valorUnitario;
+	private BigDecimal valorUnitario;
 	private int quantidade;
 	
-	public long getId() {
+	public Operacao() {
+	}
+	
+	public Operacao(String ativo, String tipo, Calendar data, BigDecimal valorUnitario, int quantidade) {
+		this.ativo = ativo;
+		this.tipo = tipo;
+		this.data = data;
+		this.valorUnitario = valorUnitario;
+		this.quantidade = quantidade;
+	}
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getAtivo() {
@@ -45,10 +57,10 @@ public class Operacao {
 	public void setData(Calendar data) {
 		this.data = data;
 	}
-	public double getValorUnitario() {
+	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
-	public void setValorUnitario(double valorUnitario) {
+	public void setValorUnitario(BigDecimal valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 	public int getQuantidade() {
@@ -57,5 +69,11 @@ public class Operacao {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	@Override
+	public String toString() {
+		return "id: " + this.getId() + " ativo: " + this.getAtivo() + " qtde: " + this.getQuantidade() + " " + this.getTipo() + " data: " + this.getData().getTime() + " valor unitário: " + this.getValorUnitario();
+	}
+	
 
 }
