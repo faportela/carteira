@@ -72,7 +72,7 @@ public class Operacao {
 	
 	@Override
 	public String toString() {
-		return "id: " + this.getId() + " ativo: " + this.getAtivo() + " qtde: " + this.getQuantidade() + " " + this.getTipo() + " data: " + this.getData().getTime() + " valor unitário: " + this.getValorUnitario();
+		return "Operacao[id: " + this.getId() + " ativo: " + this.getAtivo() + " qtde: " + this.getQuantidade() + " " + this.getTipo() + " data: " + this.getData().getTime() + " valor unitário: " + this.getValorUnitario() + "]";
 	}
 	
 
